@@ -7,5 +7,6 @@ My Computer experience so far has included making a full POS system using php wh
 I hope to take knowledge from this course I will learn and be able to use it in the future and in the real world with what job I hope to get in this field. 
 
  
-![image](https://user-images.githubusercontent.com/89408207/188533309-cdb9ba58-2808-4c8c-af6e-4df5e4e7b65d.png)
+![image](https://user-images.githubusercontent.com/89408207/188533550-88005a5f-c218-4c48-a0e9-cd4bdce1af7d.png)
+
 
