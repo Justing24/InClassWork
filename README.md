@@ -1,12 +1,2 @@
-# InClassWork
-
-Justin Ginese
-
-My Computer experience so far has included making a full POS system using php which was an online shoe store that saved data through a database and your cart through sessions.
-
-I hope to take knowledge from this course I will learn and be able to use it in the future and in the real world with what job I hope to get in this field. 
-
- 
-![image](https://user-images.githubusercontent.com/89408207/188533550-88005a5f-c218-4c48-a0e9-cd4bdce1af7d.png)
-
-
+# 2022-fall-web-dev
+### The best class at New Paltz
