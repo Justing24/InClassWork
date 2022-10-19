@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+<<<<<<< HEAD
 import WorkoutListView from '../views/WorkoutListView.vue'
 import AddWorkoutView from '../views/AddWorkoutView.vue'
 import EditWorkoutView from '../views/EditWorkoutView.vue'
@@ -9,6 +10,8 @@ import NotFoundView from '../views/NotFoundView.vue'
 import IndexView from '../views/IndexView.vue'
 import session from '@/stores/session'
 
+=======
+>>>>>>> parent of de71abb (changes)
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +41,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     }
+<<<<<<< HEAD
     ,
 
     /* 
@@ -114,6 +118,8 @@ const router = createRouter({
       component: NotFoundView
     }
     
+=======
+>>>>>>> parent of de71abb (changes)
   ]
 })
 

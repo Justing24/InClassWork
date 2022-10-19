@@ -1,9 +1,14 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import WelcomeCard from '../components/WelcomeCard.vue';
 
 
+=======
+import TheWelcome from '../components/TheWelcome.vue'
+>>>>>>> parent of de71abb (changes)
 </script>
 <template>
+<<<<<<< HEAD
 
 
 
@@ -33,3 +38,9 @@ import WelcomeCard from '../components/WelcomeCard.vue';
 
 
 </template>
+=======
+  <main>
+    <TheWelcome />
+  </main>
+</template>
+>>>>>>> parent of de71abb (changes)
