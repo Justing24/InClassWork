@@ -1,48 +1,41 @@
-<script setup lang="ts">
-    import { useSession } from "../models/session";
-    const session = useSession();
-
-</script>
-
 <template>
-    <div class="buttons" v-if="!session.user">
-        <router-link class="button is-primary" to="/signup">
+    <div class="buttons" v-if="!Session.user">
+          <a class="button is-primary">
             <strong>Sign up</strong>
-        </router-link>
-        <router-link class="button is-light" to="/login">
+          </a>
+          <a class="button is-light" @click="login">
             Log in
-        </router-link>
+          </a>
     </div>
-    <div class="buttons" v-else>
-        <div class="avatar">
-            <img :src="session.user.pic" />
-            <div>
-                <strong>{{ session.user.firstName }} {{ session.user.lastName }}</strong> <br />
-                <i>{{ session.user.email }}</i>
-            </div>
-        </div>
-        <a class="button is-primary" @click="session.Logout()">
-            <strong>Log out</strong>
-        </a>
+    <div v-else>
+        Hello {{name}} 
     </div>
 </template>
 
-<style scoped lang="scss">
-    .avatar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: .5em;
-        gap: .5em;
-        line-height: 1em;
+<script>
+import Session from "../services/session";
 
-        img {
-            width: 48px;
-            height: 48px;
-            max-height: max-content;
-            border-radius: 10%;
-            overflow: hidden;
-            object-fit: cover;
+export default {
+    data (){
+        return ({ 
+            Session
+        })
+    },
+    methods: {
+        login(){
+            this.$router.push('/login');
+            //this.Session.Login();
+
+        }
+    },
+    computed:{
+        name(){
+            return this.Session.user.firstName + ' ' + this.Session.user.lastName;
         }
     }
+}
+</script>
+
+<style>
+
 </style>

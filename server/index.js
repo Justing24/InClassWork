@@ -1,53 +1,45 @@
-require('dotenv').config();
 const express = require('express');
+const path = require('path');
+require('dotenv').config();
 
-const userModel = require('./models/user');
+console.log(`The best class at New Paltz is ${process.env.BEST_CLASS}`);
+
 const usersController = require('./controllers/users');
 const postsController = require('./controllers/posts');
-
-const { requireAuth } = require('./models/auth');
 
 const app = express()
 const port = process.env.PORT || 3000;
 
-//console.log(process.env);
-
 app
-    
-    .use('/', express.static(__dirname + '/public/'))
+    .use('/', express.static(path.join(__dirname, '../docs')) )
 
-    .use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    /*
+        Access-Control-Allow-Origin: https://foo.example
+        Access-Control-Allow-Methods: POST, GET, OPTIONS
+        Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+    */
+
+    .use( (req, res, next) =>{
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', '*');
+        res.setHeader('Access-Control-Allow-Headers', '*');
         next();
-    })
+    } )
 
     .use(express.json())
-    .use((req, res, next) => {
-        const auth = req.headers.authorization;
-        if(auth){
-            const token = auth.split(' ')[1];
-            userModel.fromToken(token)
-            .then(user => {
-                req.user = user;
-                next();
-            }).catch(next);
-        }else{
-            next();
-        }
-    })
+    .use('/users', usersController )
+    .use('/posts', postsController)
 
-    .get('/api/', (req, res) => {
-        res.send('You are at the root of the API. For the best class ever - ' + process.env.BEST_CLASS_EVER);
-    })
-    .use('/api/users', usersController)
-    .use('/api/posts', /*requireAuth,*/ postsController)
+app
+    .get('*', (req, res) => res.sendFile(path.join(__dirname, '../docs/index.html')) )
 
-    .use((err, req, res, next) => {
+app
+    .use((err, req, res, next)=>{
+        // Besides for sending the error to the client. It is helpful to write it to the terminal/console.
+        // More information can be serialized to the console than can be serialized to JSON for transfer over the wire.
+        // Eventually you may want to add logic to prevent sensitive information from being sent to the client and to reformat the error message to make it more user friendly
         console.error(err);
-
-        res .status(err.statusCode || 500)
-            .send({ errors: [ err.message ?? 'Internal server error' ] });
+        res.status(err.code || 500).send(err);
     })
 
 app.listen(port, () => {

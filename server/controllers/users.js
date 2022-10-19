@@ -1,69 +1,114 @@
-/* B"H
+/*  B"H
 */
-const express = require('express');
+const express = require("express");
+const model = require("../models/users");
+const friends = require("../models/friends");
+
 const app = express.Router();
-const { requireAuth } = require('../models/auth');
-
-const userModel = require('../models/user');
-
-const CREATED_STATUS = 201;
 
 app
-    .get('/', requireAuth, (req, res, next) => {
-        userModel.getList()
-        .then(users => {
-            res.send({ success: true, errors: [], data: users });
-        }).catch(next);
+    .get("/", (req, res, next) =>{
+        model.GetAll()
+        .then(user=>{ 
+            res.send(user);
+        })
+        .catch(next) 
     })
-    .get('/handle/:handle', (req, res, next) => {
-        userModel.getByHandle(req.params.handle)
-        .then(user => {
-            res.send({ success: true, errors: [], data: user });
-        }).catch(next);
+    .get("/search", (req, res, next) =>{
+        model .Search(req.query.q)
+              .then( x=> res.send(x) )
+              .catch(next)    
     })
-    .get('/:id', (req, res, next) => {
-        userModel.get(req.params.id)
-        .then(user => {
-            res.send({ success: true, errors: [], data: user });
-        }).catch(next);
-    })
-    .post('/', (req, res, next) => {
-        userModel.create(req.body)
-        .then(user => {
-            res.status(CREATED_STATUS).send({ success: true, errors: [], data: user });
-        }).catch(next);
-    })
-    .delete('/:id', requireAuth, (req, res, next) => {
-
-        userModel.remove(req.params.id)
-        .then(user => {
-            res.send({ success: true, errors: [], data: user });
-        }).catch(next);
-        //const user = userModel.remove(req.params.id);
-        //res.send({ success: true, errors: [], data: user });
-
-    })
-    .patch('/:id', (req, res, next) => {
-
-        userModel.update(req.params.id, req.body )
-        .then(user => {
-            res.send({ success: true, errors: [], data: user });
-        }).catch(next);
-
-    })
-    .post('/login', (req, res, next) => {
-        userModel.login(req.body.email, req.body.password)
-        .then(user => {
-            res.send({ success: true, errors: [], data: user });
-        }).catch(next);
-    })
-    .post('/seed', (req, res, next) => {
-        userModel.seed()
-        .then(x => {
-            res.send({ success: true, errors: [], data: x.insertedIds });
-        }).catch(next);
+    .get("/:user_id", (req, res, next) =>{
+        model.Get(req.params.user_id)
+           .then(user=>{ 
+               res.send(user);
+           })
+           .catch(next) 
+   })
+   .get("/byhandle/:handle", (req, res, next) =>{
+        model.GetByHandle(req.params.handle)
+            .then(user=>{ 
+                res.send(user);
+            })
+            .catch(next) 
     })
 
+    .patch("/:user_id", (req, res, next) =>{
 
+        model   .Update(req.params.user_id, req.body)
+                .then( user=> res.send(user) )
+                .catch(next) 
+
+    })
+    .delete("/:user_id", (req, res, next) =>{
+
+        model   .Delete(req.params.user_id)
+                .then( user=> res.send({ deleted: user }) )
+                .catch(next) 
+
+    })
+    .post("/:follower/follow/:followee", (req, res, next) =>{
+
+        friends.Follow(req.params.follower, req.params.followee)
+            .then(response=>{
+                if(response.modifiedCount){
+                    res.send({ success: true });                    
+                }else{
+                    throw { code: 409, msg: "You are already following or trying to follow " + req.params.followee }
+                } 
+            })
+            .catch(next) 
+
+    })
+    .delete("/:follower/follow/:followee", (req, res, next) =>{
+
+        friends.UnFollow(req.params.follower, req.params.followee)
+            .then(response=>{
+                if(response.modifiedCount){
+                    res.send({ success: true });                    
+                }else{
+                    throw { code: 404, msg: "You aren't following or trying to follow " + req.params.followee }
+                } 
+            })
+            .catch(next) 
+
+    })
+    .patch("/:follower/approve/:followee", (req, res, next) =>{
+
+        friends.Approve(req.params.follower, req.params.followee, req.body.shouldApprove)
+            .then(response=>{
+                if(response.modifiedCount){
+                    res.send({ success: true });                    
+                }else{
+                    throw { code: 409, msg:  req.params.follower + " hasn't request to follow you." }
+                } 
+            })
+            .catch(next) 
+
+    })
+    .post("/login", (req, res, next) =>{
+
+        model.Login(req.body.handle, req.body.password)
+            .then(user=>{ 
+                res.send(user);
+            })
+            .catch(next) 
+
+    })
+    .post("/register", (req, res, next) =>{
+        model.Add(req.body)
+            .then(user=>{
+                res.status(201).send(user);
+            })
+            .catch(next) 
+    })
+    .post("/seed", (req, res, next) =>{
+        model.Seed()
+            .then(user=>{
+                res.status(201).send("Created");
+            })
+            .catch(next) 
+    })
 
 module.exports = app;

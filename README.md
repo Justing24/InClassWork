@@ -1,10 +1,5 @@
-# This repo will hold my work in class
-## Graduate Level Advanced Web Programming - Spring 2022
+# 2021Fall
 
- - HTML
- - CSS
- - Bulma
- - Vue 3
- - NodeJS
- - Express
- - CI/CD
+The repo for all students to follow
+
+## Uses Bulma for styling

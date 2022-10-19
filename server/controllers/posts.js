@@ -1,61 +1,76 @@
-/* B"H
+/*  B"H
 */
-const express = require('express');
+const express = require("express");
+const model = require("../models/posts");
+const comments = require("../models/comments");
+
 const app = express.Router();
 
-const postModel = require('../models/post');
-
-const CREATED_STATUS = 201;
-
 app
-    .get('/', (req, res, next) => {
-        postModel.getList()
-            .then(posts => res.json({ success: true, errors: [], data: posts }))
-            .catch(next);
+    .get("/", (req, res, next) =>{
+        model   .GetAll()
+                .then( x=> res.send(x) )
+                .catch(next) 
     })
-    .get('/wall', (req, res, next) => {
-        postModel.getWall(req.user.handle)
-            .then(posts => res.json({ success: true, errors: [], data: posts }))
-            .catch(next);
+    .get("/wall/:handle", (req, res, next) =>{
+        model   .GetWall(req.params.handle)
+                .then( x=> res.send(x) )
+                .catch(next)    
     })
-    .get('/wall/:handle', (req, res, next) => {
-        // if the user is not friends with the requested handle, then return an error
+    .get("/feed/:handle", (req, res, next) =>{
+        model   .GetFeed(req.params.handle)
+                .then( x=> res.send(x) )
+                .catch(next)    
+    })
+    .get("/search", (req, res, next) =>{
+        model   .Search(req.query.q)
+                .then( x=> res.send(x) )
+                .catch(next)    
+    })
+    .get("/comments/:id", (req, res, next) =>{
+        comments.Get(req.params.id)
+                .then( x=> res.send(x) )
+                .catch(next)    
+    })
+    .post("/:id/comments", (req, res, next) =>{
+        comments.Add(req.params.id, req.body)
+                .then( x=> res.status(201).send(x.insertedComment) )
+                .catch(next)
+    })
+    .patch("/comments/:id", (req, res, next) =>{
+        comments.Update(req.params.id, req.body)
+                .then( x=> res.send(x) )
+                .catch(next) 
+    })
+    .delete("/comments/:id", (req, res, next) =>{
+        comments.Delete(req.params.id)
+                .then( x=> res.send({ deleted: x }) )
+                .catch(next) 
+    })
+    .get("/:id", (req, res, next) =>{
+        model   .Get(req.params.id)
+                .then( x=> res.send(x) )
+                .catch(next)    
+    })
+    .post("/", (req, res, next) =>{
+        model   .Add(req.body)
+                .then( x=> res.status(201).send(x) )
+                .catch(next)
+    })
+    .patch("/:id", (req, res, next) =>{
+        model   .Update(req.params.id, req.body)
+                .then( x=> res.send(x) )
+                .catch(next) 
+    })
+    .delete("/:id", (req, res, next) =>{
+        model   .Delete(req.params.id)
+                .then( x=> res.send({ deleted: x }) )
+                .catch(next) 
+    })
 
-        postModel.getWall(req.params.handle)
-            .then(posts => res.json({ success: true, errors: [], data: posts }))
-            .catch(next);
+    .post("/seed", (req, res, next) =>{
+        model   .Seed()
+                .then( x=> res.status(201).send("Created") )
+                .catch(next)
     })
-    .get('/:id', (req, res, next) => {
-        postModel.get(req.params.id)
-            .then(post => res.json({ success: true, errors: [], data: post }))
-            .catch(next);
-
-    })
-    .post('/', (req, res, next) => {
-
-        req.body.owner = req.user.handle;
-        
-        postModel.create(req.body)
-            .then(post => res.status(CREATED_STATUS).json({ success: true, errors: [], data: post }))
-            .catch(next);
-    })
-    .delete('/:id', (req, res, next) => {
-        postModel.remove(req.params.id)
-            .then(post => res.json({ success: true, errors: [], data: post }))
-            .catch(next);
-
-    })
-    .patch('/:id', (req, res, next) => {
-        postModel.update(req.params.id, req.body)
-            .then(post => res.json({ success: true, errors: [], data: post }))
-            .catch(next);
-    })
-    .post('/seed', (req, res, next) => {
-        postModel.seed()
-            .then(post => res.status(CREATED_STATUS).json({ success: true, errors: [], data: post }))
-            .catch(next);
-    })
-
-
-
 module.exports = app;
