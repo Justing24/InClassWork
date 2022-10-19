@@ -1,8 +1,9 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,vuejs,dotenv,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,vuejs,dotenv,visualstudiocode
 
-### dotenv ###
-.env
+# Created by https://www.toptal.com/developers/gitignore/api/node,vuejs,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,vuejs,visualstudiocode
+
+server/public
+build/
 
 ### Node ###
 # Logs
@@ -80,6 +81,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
+.env
 .env.development.local
 .env.test.local
 .env.production.local
@@ -163,10 +165,6 @@ dist
 .ionide
 
 # Support for Project snippet scope
-.vscode/*.code-snippets
-
-# Ignore code-workspaces
-*.code-workspace
 
 ### Vuejs ###
 # Recommended template: Node.gitignore
@@ -175,4 +173,4 @@ dist/
 npm-debug.log
 yarn-error.log
 
-# End of https://www.toptal.com/developers/gitignore/api/node,vuejs,dotenv,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/node,vuejs,visualstudiocode
