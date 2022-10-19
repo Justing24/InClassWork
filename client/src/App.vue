@@ -1,30 +1,17 @@
-<template>
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <Nav />
-                <messages />
-                <router-view/>                 
-            </div>
-        </div>
-       
-    </div>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import NavVue from './components/Nav.vue';
+</script>
 
+<template>
+  <header>
+
+    <NavVue></NavVue>
+  </header>
+
+  <RouterView />
 </template>
 
-<style lang="scss">
-
+<style scoped>
 
 </style>
-
-<script>
-import Messages from './components/Messages.vue';
-import Nav from "./components/Nav";
-
-export default {
-    components: {
-        Nav,
-        Messages
-    }
-}
-</script>

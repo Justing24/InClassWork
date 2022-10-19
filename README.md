@@ -1,5 +1,2 @@
-# 2021Fall
-
-The repo for all students to follow
-
-## Uses Bulma for styling
+# Final-Project-Web-2022
+This is a repo for :final project Web 2002
