@@ -1,16 +1,23 @@
 <script setup lang="ts">
     import session, { login, logout } from '../stores/session'
-    
 
 </script>
 
 <template>
-    <div  v-if="session.user != null">
-       Welcome to Muscle Booster,  {{session.user.firstName}} {{session.user.lastName}} 
-        <div v-if="session.user.firstName != 'Guest'">
-        <button @click="logout()" class="button is-info">Log Out</button>
-        </div>
-        </div>
+    <div class="buttons" v-if="session.user == null">
+        <a class="button is-primary">
+            <strong>Sign up</strong>
+        </a>
+        <a class="button is-light" @click="login('Moshe', 'Plotkin')">
+            Log in
+        </a>
+    </div>
+    <div v-else>
+        Welcome {{session.user.firstName}} {{session.user.lastName}}
+        (<a @click="logout()">
+            Log out
+        </a>)
+    </div>
 
 </template>
 

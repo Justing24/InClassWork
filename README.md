@@ -1,10 +1,2 @@
-
-
-
-cd client
-npm install
-npm run dev
-npm run build
-
-
-Bigger and better changes coming soon..... :)
+# 2022-fall-web-dev
+### The best class at New Paltz

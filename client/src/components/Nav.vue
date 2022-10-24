@@ -1,86 +1,76 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
-import session, { login, logout } from '../stores/session' 
-import LoginBadge from './LoginBadge.vue';
+    import { ref } from 'vue';
+    import { RouterLink } from 'vue-router';
+    import LoginBadge from './LoginBadge.vue';
 
-let isActive = ref(false);
-let isOpen = ref(false);
-
+    let isActive = ref(false);
 
 </script>
 
 <template>
-  <nav class="navbar is-info" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="../assets/logo.jpg" width="112" height="28">
-      </a>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 
-      <a role="button" :class="{ 'is-active': isOpen }" @click="isOpen = !isOpen"  class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpen }">
-      <div class="navbar-start">
-        <router-link to="/home" class="navbar-item">
-          Home
-        </router-link>
-
-        <router-link to="/workout" class="navbar-item">
-          Workout
-        </router-link>
-        <router-link to="/stats" class="navbar-item">
-          Stats
-        </router-link>
-
-
+        <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          </a>
       
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            
-            <div class="dropdown is-active">
-              <div class="dropdown-trigger">
-                <button v-if="session.user == null || session.user.firstName == 'Guest'" @click="isActive = !isActive" class="button" aria-haspopup="true"
-                  aria-controls="dropdown-menu3">
-                  <span>User Log in</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div v-if="session.user == null || session.user.firstName == 'Guest' " class="dropdown-menu" id="dropdown-menu1" role="menu" v-show="isActive">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item" @click="login('Justin', 'Ginese')">
-                    
-                    
-                      Justin Ginese
-                    
-                  </a>
-            
-                </div>
+          <a :class="{ 'is-active': isActive }" @click="isActive = !isActive" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu"  :class="{ 'is-active': isActive }">
+          <div class="navbar-start">
+            <router-link to="/" class="navbar-item">
+              Home
+            </router-link>
+      
+            <router-link class="navbar-item" to="/store">
+              Store
+            </router-link>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+                <router-link class="navbar-item" to="/about">
+                  About
+                </router-link>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
               </div>
             </div>
-            <router-link to="/admin" class="button">
-              Admin
-            </router-link>
-            <LoginBadge></LoginBadge>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+
+              <login-badge></login-badge>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </nav>
+        </div>
+      </nav>
+
 </template>
 
-
-
-<style lang="scss" scoped>
-
-
+<style>
+    .router-link-active {
+        
+        border-bottom: #00AA00 5px solid;
+    }
 </style>
