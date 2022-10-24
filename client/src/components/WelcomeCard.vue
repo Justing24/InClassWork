@@ -14,16 +14,19 @@ import session, { login, logout } from '../stores/session' ;
             </header>
             <div class="card-content">
                 <div class="media">
-                    <div class="media-right">
+                    <div class="media-left">
                     </div>
                     <div class="media-content">
                         <p class="title is-4">{{session?.user?.firstName}} {{session?.user?.lastName}} </p>
-                        <p class="subtitle is-4">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
+                        <p class="subtitle is-6">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
                     </div>
                 </div>
 
                 <div class="content">
-                  
+                    <br>
+                
+                    <br>
+                    <br><br>
                 </div>
             </div>
         </div>
