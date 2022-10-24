@@ -7,9 +7,9 @@
 <template>
     <div  v-if="session.user != null" class="avatar">
         <img :src="session.user.image" width="64" height="64">
-        Welcome {{session.user.firstName}} {{session.user.lastName}} 
+        Welcome to Muscle Booster {{session.user.firstName}} {{session.user.lastName}} 
         <div v-if="session.user.firstName != 'Guest'">
-        <button @click="logout()" class="button is-info">Log out</button>
+        <button @click="logout()" class="button is-info">Log Out</button>
         </div>
     </div>
 

@@ -7,7 +7,7 @@
             </div>
             <div class="message-body">
 
-                <p>Wopps something went wrong</p>
+                <p>Whoops something went wrong</p>
             </div>
         </article>
 

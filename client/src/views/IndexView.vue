@@ -11,6 +11,7 @@
                 </p>
                 <p> Please pick a user from the dropdown to sign in.
                 </p>
+              
             </div>
         </section>
 
@@ -18,10 +19,8 @@
 </template>
 
 <script setup lang="ts">
-// need this stuff for rotues to work
 import session, { login, logout } from '../stores/session'
 
-// login('Guest', 'User', 'src/assets/images.jpg')
 </script>
 
 <style scoped>

@@ -1,35 +1,25 @@
 <script setup lang="ts">
-<<<<<<< HEAD
 import WelcomeCard from '../components/WelcomeCard.vue';
 
 
-=======
-import TheWelcome from '../components/TheWelcome.vue'
->>>>>>> parent of de71abb (changes)
 </script>
 <template>
-<<<<<<< HEAD
 
 
 
   <article class="message is-info">
     <div class="message-header">
-      <p>Landing Page</p>
+      <p>Home</p>
     </div>
     <div class="message-body">
 
-      <h1>Welcome</h1>
-      <p>Welcome to the temperary home page. If you are a guest visitor, please sign in for accsess to more pages</p>
+      <h1>Welcome to the temperary home page.</h1>
 
     </div>
   </article>
 
   
-  <!-- <div class="columns">
-    <div class="column is-half"> <WelcomeCard></WelcomeCard></div>
-    <div class="column">Auto</div>
-  <div class="column">Auto</div> -->
-<!-- </div> -->
+
  <WelcomeCard></WelcomeCard> 
  
 
@@ -38,9 +28,3 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 
 </template>
-=======
-  <main>
-    <TheWelcome />
-  </main>
-</template>
->>>>>>> parent of de71abb (changes)
