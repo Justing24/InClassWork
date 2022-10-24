@@ -10,7 +10,7 @@
                 <p>if you are able to see this page and are either not signed in or signed in with another user, a bug is present</p>
             </div>
         </article>
-        <button  @click="$router.push('/home')"  class="button is-warning">Go Back to /home</button>
+        <button  @click="$router.push('/home')"  class="button is-warning">Go Back to HomePage</button>
 
     </div>
 </template>

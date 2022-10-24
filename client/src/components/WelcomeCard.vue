@@ -12,11 +12,6 @@ import session, { login, logout } from '../stores/session' ;
                     Current User
                 </p>
             </header>
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img :src="session?.user?.image" width="1280" height="960" alt="Placeholder image">
-                </figure>
-            </div>
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">

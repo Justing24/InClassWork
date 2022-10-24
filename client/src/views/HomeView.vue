@@ -13,7 +13,7 @@ import WelcomeCard from '../components/WelcomeCard.vue';
     </div>
     <div class="message-body">
 
-      <h1>Welcome to the temperary home page.</h1>
+      <h1></h1>
 
     </div>
   </article>

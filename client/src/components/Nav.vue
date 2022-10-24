@@ -58,11 +58,11 @@ let isOpen = ref(false);
               </div>
               <div v-if="session.user == null || session.user.firstName == 'Guest' " class="dropdown-menu" id="dropdown-menu3" role="menu" v-show="isActive">
                 <div class="dropdown-content">
-                  <a href="#" class="dropdown-item" @click="login('Justin', 'Ginese','src/assets/BCS_S6_Portrait_Jimmy.webp')">
-                    <figure class="image is-48x48">
-                      <img src="../assets/BCS_S6_Portrait_Jimmy.webp">
+                  <a href="#" class="dropdown-item" @click="login('Justin', 'Ginese')">
+                    
+                    
                       Justin Ginese
-                    </figure>
+                    
                   </a>
             
                 </div>

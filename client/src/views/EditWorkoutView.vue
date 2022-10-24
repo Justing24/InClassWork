@@ -6,7 +6,6 @@
             </div>
             <div class="message-body">
 
-                <h1>THIS IS A PAGE TO EDIT WORKOUTS</h1>
 
                 <div class="field">
             <label class="label is-large">Add New Workout</label>
@@ -22,18 +21,6 @@
             </div>
         </div>
 
-        <div class="field">
-            <label class="label">Picture</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input is-large"  placeholder="Enter Picture Link" v-model="picture"/>
-                <span class="icon is-left">
-                    <i class="fas fa-envelope fa-sm"></i>
-                </span>
-                <span class="icon is-right">
-                    <i class="fas fa-check fa-sm"></i>
-                </span>
-            </div>
-        </div>
 
         <div class="field">
             <label class="label">Location</label>
@@ -109,17 +96,12 @@ import { ref } from 'vue';
 import router from '../router'
 
 let title = ref("")
-let picture = ref("")
 let location = ref("")
 let type = ref("")
 let duration = ref("")
 let date = ref("")
 
 
-function SubmitForm() {
-    console.log(picture.value)
-
-  }
 
 </script>
 
