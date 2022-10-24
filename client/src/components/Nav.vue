@@ -11,11 +11,10 @@ let isOpen = ref(false);
 </script>
 
 <template>
-  <nav class="navbar is-info
-" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-info" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <img src="logo.jpg" width="112" height="28">
       </a>
 
       <a role="button" :class="{ 'is-active': isOpen }" @click="isOpen = !isOpen"  class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -45,7 +44,7 @@ let isOpen = ref(false);
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <!-- start of user login dropdown -->
+            
             <div class="dropdown is-active">
               <div class="dropdown-trigger">
                 <button v-if="session.user == null || session.user.firstName == 'Guest'" @click="isActive = !isActive" class="button" aria-haspopup="true"
@@ -56,7 +55,7 @@ let isOpen = ref(false);
                   </span>
                 </button>
               </div>
-              <div v-if="session.user == null || session.user.firstName == 'Guest' " class="dropdown-menu" id="dropdown-menu3" role="menu" v-show="isActive">
+              <div v-if="session.user == null || session.user.firstName == 'Guest' " class="dropdown-menu" id="dropdown-menu1" role="menu" v-show="isActive">
                 <div class="dropdown-content">
                   <a href="#" class="dropdown-item" @click="login('Justin', 'Ginese')">
                     
@@ -68,7 +67,7 @@ let isOpen = ref(false);
                 </div>
               </div>
             </div>
-            <router-link to="/admin" class="button is-dark">
+            <router-link to="/admin" class="button">
               Admin
             </router-link>
             <LoginBadge></LoginBadge>

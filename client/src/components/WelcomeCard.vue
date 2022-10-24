@@ -18,7 +18,7 @@ import session, { login, logout } from '../stores/session' ;
                     </div>
                     <div class="media-content">
                         <p class="title is-4">{{session?.user?.firstName}} {{session?.user?.lastName}} </p>
-                        <p class="subtitle is-6">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
+                        <p class="subtitle is-4">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
                     </div>
                 </div>
 
