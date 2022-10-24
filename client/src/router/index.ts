@@ -6,7 +6,6 @@ import AddWorkoutView from '../views/AddWorkoutView.vue'
 import EditWorkoutView from '../views/EditWorkoutView.vue'
 import StatsView from '../views/StatsView.vue'
 import AdminView from '../views/AdminView.vue'
-import NotFoundView from '../views/NotFoundView.vue'
 import session from '@/stores/session'
 
 
@@ -89,12 +88,8 @@ const router = createRouter({
         }
       }
     }
-    ,
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'notfoundview',
-      component: NotFoundView
-    }
+  
+
     
   ]
 })
