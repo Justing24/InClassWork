@@ -13,7 +13,6 @@
         <div v-for="(workout, i) in workouts" :key="i">
                     {{ workout.user }}
                     {{ workout.title }}
-                    {{ workout.picture }}
                     {{ workout.location }}
                     {{ workout.type }}
                     {{ workout.duration }}

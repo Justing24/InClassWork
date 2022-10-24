@@ -22,20 +22,16 @@
                                     {{ workout.title }}
                                 </p>
                             </header>
-                            <figure class="image is-4by3">
-                                <img v-bind:src="workout.picture" alt="Placeholder image">
-                            </figure>
+                            
                         </div>
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="../assets/sportIcon.webp" alt="">
-                                    </figure>
+                                    
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-4">{{ workout.user }}</p>
-                                    <p class="subtitle is-6">@{{ workout.user }}</p>
+                                    <p class="subtitle is-4">@{{ workout.user }}</p>
                                 </div>
                             </div>
 

@@ -3,7 +3,6 @@ import IndexView from '../views/IndexView.vue'
 import HomeView from '../views/HomeView.vue'
 import WorkoutListView from '../views/WorkoutListView.vue'
 import AddWorkoutView from '../views/AddWorkoutView.vue'
-import EditWorkoutView from '../views/EditWorkoutView.vue'
 import StatsView from '../views/StatsView.vue'
 import AdminView from '../views/AdminView.vue'
 import session from '@/stores/session'
@@ -54,18 +53,7 @@ const router = createRouter({
       }
     }
     ,
-    {
-      path: '/editworkout',
-      name: 'editworkout',
-      component: EditWorkoutView,
-      beforeEnter: (to, from) => {
-        
-        if(!session.user){
-          return '/';
-        }
-      }
-    }
-    ,
+   
     {
       path: '/stats',
       name: 'stats',

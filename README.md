@@ -1,2 +1,10 @@
-# Final-Project-Web-2022
-This is a repo for :final project Web 2002
+
+
+
+cd client
+npm install
+npm run dev
+npm run build
+
+
+Bigger and better changes coming soon..... :)

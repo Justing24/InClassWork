@@ -1,8 +1,9 @@
 <template>
     <div>
-        <section class="hero is-large">
+        <section class="hero">
             <div class="hero-body">
-                <p> Please pick a user from the dropdown to sign in.
+
+                <p>Select User from Dropdown In the Top Right
                 </p>
               
             </div>

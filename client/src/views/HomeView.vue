@@ -7,17 +7,6 @@ import WelcomeCard from '../components/WelcomeCard.vue';
 
 
 
-  <article class="message is-info">
-    <div class="message-header">
-      <p>Home</p>
-    </div>
-    <div class="message-body">
-
-      <h1></h1>
-
-    </div>
-  </article>
-
   
 
  <WelcomeCard></WelcomeCard> 

@@ -1,16 +1,20 @@
 <template>
     <div>
-        <article class="message is-warning">
+        <article class="message">
             <div class="message-header">
                 <p>Admin</p>
             </div>
             <div class="message-body">
 
-                <h1>THIS IS AN ADMIN PAGE</h1>
-                <p>if you are able to see this page and are either not signed in or signed in with another user, a bug is present</p>
+                <h1>THIS IS AN ADMIN PAGE\
+
+
+
+                    Data will be added soon.....
+                </h1>
             </div>
         </article>
-        <button  @click="$router.push('/home')"  class="button is-warning">Go Back to HomePage</button>
+        <button  @click="$router.push('/home')"  class="button">Go Back to HomePage</button>
 
     </div>
 </template>

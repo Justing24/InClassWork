@@ -1,7 +1,6 @@
 
 <script setup lang="ts">
 import session, { login, logout } from '../stores/session' ;
-
 </script>
 <template>
     <div class="columns">
@@ -12,39 +11,32 @@ import session, { login, logout } from '../stores/session' ;
                     Current User
                 </p>
             </header>
+        
             <div class="card-content">
                 <div class="media">
-                    
-                  
+                    <div class="media-left">
+                    </div>
+                    <div class="media-content">
                         <p class="title is-4">{{session?.user?.firstName}} {{session?.user?.lastName}} </p>
                         <p class="subtitle is-4">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
                     </div>
                 </div>
-
                 <div class="content">
-                    <br>
                 
                     <br>
-                    <br><br>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="column is-half">
-
+    <div class="column">
         <article class="message is-link">
   <div class="message-body">
-
-        Welcome, <strong>{{session?.user?.firstName}} {{session?.user?.lastName}}</strong>! 
+        Welcome back <strong>{{session?.user?.firstName}} {{session?.user?.lastName}}</strong>! 
         
   </div>
 </article>
     </div>
 </div>
 </template>
-
-
 <style scoped>
-
 </style>
