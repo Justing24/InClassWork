@@ -14,7 +14,7 @@ import session, { login, logout } from '../stores/session' ;
             </header>
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img :src="session.user.image" width="1280" height="960" alt="Placeholder image">
+                    <img :src="session?.user?.image" width="1280" height="960" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -22,16 +22,16 @@ import session, { login, logout } from '../stores/session' ;
                     <div class="media-left">
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{session.user.firstName}} {{session.user.lastName}} </p>
-                        <p class="subtitle is-6">@{{session.user.firstName}} {{session.user.lastName}}</p>
+                        <p class="title is-4">{{session?.user?.firstName}} {{session?.user?.lastName}} </p>
+                        <p class="subtitle is-6">@{{session.user?.firstName}} {{session.user?.lastName}}</p>
                     </div>
                 </div>
 
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
                     <br>
+                
+                    <br>
+                    <br><br>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ import session, { login, logout } from '../stores/session' ;
         <article class="message is-link">
   <div class="message-body">
 
-        Welcome back <strong>{{session.user.firstName}} {{session.user.lastName}}</strong>! You can visit the various links around the nav bar, or log out for another user to view instead.
+        Welcome, <strong>{{session?.user?.firstName}} {{session?.user?.lastName}}</strong>! 
         
   </div>
 </article>
